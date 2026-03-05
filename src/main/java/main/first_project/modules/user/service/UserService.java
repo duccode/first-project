@@ -1,8 +1,6 @@
 package main.first_project.modules.user.service;
 
-import main.first_project.modules.user.dto.UserRequest;
-import main.first_project.modules.user.dto.UserResponse;
-import main.first_project.user.dto.*;
+import main.first_project.modules.user.dto.*;
 
 import java.util.List;
 
