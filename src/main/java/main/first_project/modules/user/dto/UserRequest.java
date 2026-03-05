@@ -1,4 +1,4 @@
-package main.first_project.user.dto;
+package main.first_project.modules.user.dto;
 
 import lombok.Data;
 

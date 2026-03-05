@@ -1,7 +1,9 @@
-package main.first_project.user.mapper;
+package main.first_project.modules.user.mapper;
 
+import main.first_project.modules.user.dto.UserRequest;
+import main.first_project.modules.user.dto.UserResponse;
 import main.first_project.user.dto.*;
-import main.first_project.user.entity.User;
+import main.first_project.modules.user.entity.User;
 
 public class UserMapper {
     public static User toEntity(UserRequest request){

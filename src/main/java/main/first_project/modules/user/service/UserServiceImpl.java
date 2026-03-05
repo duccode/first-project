@@ -1,13 +1,12 @@
-package main.first_project.user.service;
+package main.first_project.modules.user.service;
 
 
 import main.first_project.exception.NotFoundException;
-import main.first_project.user.dto.UserRequest;
-import main.first_project.user.dto.UserResponse;
-import main.first_project.user.entity.User;
-import main.first_project.user.mapper.UserMapper;
-import main.first_project.user.repository.UserRepository;
-import org.hibernate.annotations.NotFound;
+import main.first_project.modules.user.dto.UserRequest;
+import main.first_project.modules.user.dto.UserResponse;
+import main.first_project.modules.user.entity.User;
+import main.first_project.modules.user.mapper.UserMapper;
+import main.first_project.modules.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

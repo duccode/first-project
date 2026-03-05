@@ -1,4 +1,4 @@
-package main.first_project.user.entity;
+package main.first_project.modules.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

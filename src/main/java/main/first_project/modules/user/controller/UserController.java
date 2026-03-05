@@ -1,11 +1,11 @@
-package main.first_project.user.controller;
+package main.first_project.modules.user.controller;
 
 import java.util.List;
 
 import main.first_project.common.ApiResponse;
-import main.first_project.user.dto.UserRequest;
-import main.first_project.user.dto.UserResponse;
-import main.first_project.user.service.UserService;
+import main.first_project.modules.user.dto.UserRequest;
+import main.first_project.modules.user.dto.UserResponse;
+import main.first_project.modules.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 
