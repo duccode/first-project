@@ -1,4 +1,18 @@
 package main.first_project.modules.template.entity;
 
-public class TmpButton {
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import main.first_project.common.BaseEntity;
+
+@Entity
+@Getter
+@Setter
+@Table(name = "tmp_buttons")
+
+public class TmpButton extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }

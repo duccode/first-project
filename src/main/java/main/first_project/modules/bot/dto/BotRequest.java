@@ -2,7 +2,7 @@ package main.first_project.modules.bot.dto;
 
 import lombok.Data;
 
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 @Data
 public class BotRequest {
@@ -11,6 +11,6 @@ public class BotRequest {
     private String viewName;
     private String urlAddFriend;
     private Integer planType;
-    private DateTimeFormatter expiredDate;
+    private LocalDateTime expiredDate;
     private Integer billStatus;
 }

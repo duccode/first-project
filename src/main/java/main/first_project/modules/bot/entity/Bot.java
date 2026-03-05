@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import main.first_project.common.BaseEntity;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Entity
@@ -30,7 +31,7 @@ public class Bot extends BaseEntity {
     private Integer planType;
 
     @Column(name = "expired_date")
-    private DateTimeFormatter expiredDate;
+    private LocalDateTime expiredDate;
 
     @Column(name = "bill_status")
     private Integer billStatus;

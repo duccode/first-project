@@ -2,7 +2,7 @@ package main.first_project.modules.template.dto;
 
 import lombok.Data;
 
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 @Data
 public class TemplateResponse {
@@ -12,6 +12,6 @@ public class TemplateResponse {
     private String viewName;
     private String urlAddFriend;
     private Integer planType;
-    private DateTimeFormatter expiredDate;
+    private LocalDateTime expiredDate;
     private Integer billStatus;
 }

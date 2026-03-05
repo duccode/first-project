@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import main.first_project.common.BaseEntity;
 
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -30,7 +30,7 @@ public class Template extends BaseEntity {
     private Integer planType;
 
     @Column(name = "expired_date")
-    private DateTimeFormatter expiredDate;
+    private LocalDateTime expiredDate;
 
     @Column(name = "bill_status")
     private Integer billStatus;
