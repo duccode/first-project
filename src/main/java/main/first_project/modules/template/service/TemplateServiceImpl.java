@@ -28,6 +28,14 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
+    public List<TemplateResponse> getByAdminId(Long adminId) {
+        return templateRepository.findByAdminId(adminId)
+                .stream()
+                .map(TemplateMapper::toDTO)
+                .toList();
+    }
+
+    @Override
     public TemplateResponse create(TemplateRequest request){
 
         Template bot = TemplateMapper.toEntity(request);

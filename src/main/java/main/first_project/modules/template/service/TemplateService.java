@@ -9,6 +9,7 @@ import java.util.List;
 public interface TemplateService {
 
     List<TemplateResponse> getAll();
+    List<TemplateResponse> getByAdminId(Long adminId);
 
     TemplateResponse create(TemplateRequest request);
     TemplateResponse getById(Long id);
