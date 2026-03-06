@@ -12,7 +12,4 @@ import main.first_project.common.BaseEntity;
 @Table(name = "buttons")
 public class Button extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 }

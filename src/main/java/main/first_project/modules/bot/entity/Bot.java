@@ -14,10 +14,6 @@ import java.time.format.DateTimeFormatter;
 @Table(name = "bots")
 public class Bot extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "admin_id")
     private Long adminId;
 

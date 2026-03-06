@@ -12,7 +12,4 @@ import main.first_project.common.BaseEntity;
 
 public class TmpButton extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 }

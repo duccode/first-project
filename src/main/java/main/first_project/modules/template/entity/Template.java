@@ -13,9 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "template")
 public class Template extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
 
     @Column(name = "admin_id")
     private Long adminId;
