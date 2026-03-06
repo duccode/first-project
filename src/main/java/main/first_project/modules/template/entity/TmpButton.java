@@ -8,7 +8,7 @@ import main.first_project.common.BaseEntity;
 @Entity
 @Getter
 @Setter
-@Table(name = "tmp_buttons")
+@Table(name = "tmp_button")
 
 public class TmpButton extends BaseEntity {
 

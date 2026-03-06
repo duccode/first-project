@@ -14,15 +14,15 @@ import java.util.List;
 @RequestMapping("/template")
 public class TemplateController {
 
-    private final TemplateService botService;
+    private final TemplateService templateService;
 
-    public TemplateController(TemplateService userService){
-        this.botService = userService;
+    public TemplateController(TemplateService templateService){
+        this.templateService = templateService;
     }
 
     @GetMapping
     public ApiResponse<List<TemplateResponse>> getAll(){
-        List<TemplateResponse> listUser = botService.getAll();
+        List<TemplateResponse> listUser = templateService.getAll();
 
         ApiResponse<List<TemplateResponse>> response = new ApiResponse<>();
         response.setSuccess(true);
@@ -33,15 +33,25 @@ public class TemplateController {
 
     @PostMapping
     public TemplateResponse create(@RequestBody TemplateRequest request){
-        return botService.create(request);
+        return templateService.create(request);
     }
 
     @GetMapping("/{id}")
     public ApiResponse<TemplateResponse> getById(@PathVariable Long id){
-        TemplateResponse user = botService.getById(id);
+        TemplateResponse template = templateService.getById(id);
         ApiResponse<TemplateResponse> response = new ApiResponse<>();
         response.setSuccess(true);
-        response.setData(user);
+        response.setData(template);
+        response.setMessage("success");
+        return response;
+    }
+
+    @GetMapping("/list")
+    public ApiResponse<List<TemplateResponse>> getListByBotId(@RequestParam Long botId){
+        List<TemplateResponse> listTemplate = templateService.getByBotId(botId);
+        ApiResponse<List<TemplateResponse>> response = new ApiResponse<>();
+        response.setSuccess(true);
+        response.setData(listTemplate);
         response.setMessage("success");
         return response;
     }
