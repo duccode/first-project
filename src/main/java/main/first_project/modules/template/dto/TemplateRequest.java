@@ -12,4 +12,5 @@ public class TemplateRequest {
     private Long categoryId;
     private String type;
     private String content;
+    private Integer inPark;
 }

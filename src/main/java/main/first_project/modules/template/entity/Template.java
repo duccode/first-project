@@ -28,4 +28,8 @@ public class Template extends BaseEntity {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "in_park")
+    private Integer inPark;
+
+
 }

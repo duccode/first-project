@@ -12,6 +12,7 @@ public class TemplateMapper {
         tmp.setCategoryId(request.getCategoryId());
         tmp.setType(request.getType());
         tmp.setContent(request.getContent());
+        tmp.setInPark(request.getInPark());
 
         return tmp;
     }
@@ -24,6 +25,7 @@ public class TemplateMapper {
         res.setCategoryId(tmp.getCategoryId());
         res.setType(tmp.getType());
         res.setContent(tmp.getContent());
+        res.setInPark(tmp.getInPark());
         return res;
     }
 }
