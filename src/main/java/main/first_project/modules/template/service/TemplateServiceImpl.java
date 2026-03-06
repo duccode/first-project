@@ -28,8 +28,8 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
-    public List<TemplateResponse> getByAdminId(Long adminId) {
-        return templateRepository.findByAdminId(adminId)
+    public List<TemplateResponse> getByBotId(Long botId) {
+        return templateRepository.findByBotId(botId)
                 .stream()
                 .map(TemplateMapper::toDTO)
                 .toList();

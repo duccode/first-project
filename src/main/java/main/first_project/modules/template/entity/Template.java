@@ -13,24 +13,19 @@ import java.time.LocalDateTime;
 @Table(name = "template")
 public class Template extends BaseEntity {
 
+    @Column(name = "bot_id")
+    private Long botId;
 
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "admin_id")
-    private Long adminId;
+    @Column(name = "category_id")
+    private Long categoryId;
 
-    @Column(name = "view_name")
-    private String viewName;
+    @Column(name = "type")
+    private String type;
 
-    @Column(name = "url_add_friend")
-    private String urlAddFriend;
-
-    @Column(name = "plan_type")
-    private Integer planType;
-
-    @Column(name = "expired_date")
-    private LocalDateTime expiredDate;
-
-    @Column(name = "bill_status")
-    private Integer billStatus;
+    @Column(name = "content")
+    private String content;
 
 }

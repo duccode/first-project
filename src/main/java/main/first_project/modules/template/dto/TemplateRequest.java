@@ -2,15 +2,14 @@ package main.first_project.modules.template.dto;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
 
 @Data
 public class TemplateRequest {
 
-    private Long adminId;
-    private String viewName;
-    private String urlAddFriend;
-    private Integer planType;
-    private LocalDateTime expiredDate;
-    private Integer billStatus;
+    private Long Id;
+    private Long botId;
+    private String name;
+    private Long categoryId;
+    private String type;
+    private String content;
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TemplateRepository extends JpaRepository<Template, Long> {
 
- List<Template> findByAdminId(Long adminId);
+ List<Template> findByBotId(Long botId);
 }

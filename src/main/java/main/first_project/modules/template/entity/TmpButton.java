@@ -12,4 +12,17 @@ import main.first_project.common.BaseEntity;
 
 public class TmpButton extends BaseEntity {
 
+    @Column(name = "template_id")
+    private Long templateId;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "text")
+    private String text;
+
+    @Column(name = "img_path")
+    private String imgPath;
+
+
 }

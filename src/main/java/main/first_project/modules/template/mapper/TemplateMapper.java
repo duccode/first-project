@@ -7,24 +7,23 @@ import main.first_project.modules.template.entity.Template;
 public class TemplateMapper {
     public static Template toEntity(TemplateRequest request){
         Template tmp = new Template();
-        tmp.setAdminId(request.getAdminId());
-        tmp.setViewName(request.getViewName());
-        tmp.setUrlAddFriend(request.getUrlAddFriend());
-        tmp.setPlanType(request.getPlanType());
-        tmp.setExpiredDate(request.getExpiredDate());
-        tmp.setBillStatus(request.getBillStatus());
+        tmp.setBotId(request.getBotId());
+        tmp.setName(request.getName());
+        tmp.setCategoryId(request.getCategoryId());
+        tmp.setType(request.getType());
+        tmp.setContent(request.getContent());
+
         return tmp;
     }
 
     public static TemplateResponse toDTO(Template tmp){
         TemplateResponse res = new TemplateResponse();
         res.setId(tmp.getId());
-        res.setAdminId(tmp.getAdminId());
-        res.setViewName(tmp.getViewName());
-        res.setUrlAddFriend(tmp.getUrlAddFriend());
-        res.setPlanType(tmp.getPlanType());
-        res.setExpiredDate(tmp.getExpiredDate());
-        res.setBillStatus(tmp.getBillStatus());
+        res.setBotId(tmp.getBotId());
+        res.setName(tmp.getName());
+        res.setCategoryId(tmp.getCategoryId());
+        res.setType(tmp.getType());
+        res.setContent(tmp.getContent());
         return res;
     }
 }
