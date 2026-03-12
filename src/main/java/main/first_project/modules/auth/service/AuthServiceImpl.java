@@ -2,6 +2,7 @@ package main.first_project.modules.auth.service;
 
 import lombok.RequiredArgsConstructor;
 import main.first_project.exception.NotFoundException;
+import main.first_project.modules.auth.dto.AuthDTO;
 import main.first_project.modules.user.dto.UserDTO;
 import main.first_project.modules.user.entity.User;
 import main.first_project.modules.user.repository.UserRepository;
@@ -18,7 +19,7 @@ public class AuthServiceImpl implements AuthService{
     private final UserRepository userRepository;
 
     @Override
-    public String login(String email, String password) {
+    public AuthDTO login(String email, String password) {
 
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -26,7 +27,12 @@ public class AuthServiceImpl implements AuthService{
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new RuntimeException("Invalid password");
         }
+        String token = JwtUtil.generateToken(user.getEmail());
+        AuthDTO authDTO = new AuthDTO();
+        authDTO.setToken(token);
+        authDTO.setType("Bearer");
+        authDTO.setExpired(86400000L);
 
-        return JwtUtil.generateToken(user.getEmail());
+        return authDTO;
     }
 }

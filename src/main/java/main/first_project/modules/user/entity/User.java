@@ -10,8 +10,6 @@ import main.first_project.common.BaseEntity;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    private String username;
-
     private String email;
     private String password;
 }

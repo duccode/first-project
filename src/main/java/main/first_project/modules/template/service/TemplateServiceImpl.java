@@ -22,6 +22,7 @@ public class TemplateServiceImpl implements TemplateService {
     private final TmpButtonRepository tmpButtonRepository;
     @Autowired
     private TmpButtonMapper tmpButtonMapper;
+    @Autowired
     private TemplateMapper templateMapper;
 
     public TemplateServiceImpl(TemplateRepository templateRepository,TmpButtonRepository tmpButtonRepository,TmpButtonMapper tmpButtonMapper){
