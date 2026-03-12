@@ -2,46 +2,45 @@ package main.first_project.modules.user.service;
 
 
 import main.first_project.exception.NotFoundException;
-import main.first_project.modules.user.dto.UserRequest;
-import main.first_project.modules.user.dto.UserResponse;
+import main.first_project.modules.user.dto.UserDTO;
 import main.first_project.modules.user.entity.User;
 import main.first_project.modules.user.mapper.UserMapper;
 import main.first_project.modules.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository){
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
-    public List<UserResponse> getAll(){
+    public List<UserDTO> getAll(){
         return userRepository.findAll()
                 .stream()
-                .map(UserMapper::toDTO)
+                .map(userMapper::toDTO)
                 .toList();
     }
 
     @Override
-    public UserResponse create(UserRequest request){
+    public UserDTO create(UserDTO request){
 
-        User user = UserMapper.toEntity(request);
+        User user = userMapper.toEntity(request);
 
         User saved = userRepository.save(user);
 
-        return UserMapper.toDTO(saved);
+        return userMapper.toDTO(saved);
     }
 
     @Override
-    public UserResponse getById(Long id){
+    public UserDTO getById(Long id){
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User not found"));
-        return UserMapper.toDTO(user);
+        return userMapper.toDTO(user);
     }
 
 }

@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface UserService {
 
-    List<UserResponse> getAll();
+    List<UserDTO> getAll();
 
-    UserResponse create(UserRequest request);
-    UserResponse getById(Long id);
+    UserDTO create(UserDTO request);
+    UserDTO getById(Long id);
 }

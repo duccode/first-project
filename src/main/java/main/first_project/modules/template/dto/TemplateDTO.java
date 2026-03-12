@@ -1,13 +1,14 @@
 package main.first_project.modules.template.dto;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
-public class TemplateResponse {
-
+@Getter
+@Setter
+public class TemplateDTO {
     private Long Id;
     private Long botId;
     private String name;
@@ -15,5 +16,6 @@ public class TemplateResponse {
     private String type;
     private String content;
     private Integer inPark;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     List<TmpButtonDTO> tmpButtonDTOList;
 }

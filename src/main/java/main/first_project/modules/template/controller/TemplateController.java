@@ -1,8 +1,7 @@
 package main.first_project.modules.template.controller;
 
 import main.first_project.common.ApiResponse;
-import main.first_project.modules.template.dto.TemplateRequest;
-import main.first_project.modules.template.dto.TemplateResponse;
+import main.first_project.modules.template.dto.TemplateDTO;
 import main.first_project.modules.template.service.TemplateService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,38 +20,26 @@ public class TemplateController {
     }
 
     @GetMapping
-    public ApiResponse<List<TemplateResponse>> getAll(){
-        List<TemplateResponse> listUser = templateService.getAll();
+    public ApiResponse<List<TemplateDTO>> getAll(){
+        List<TemplateDTO> templates = templateService.getAll();
 
-        ApiResponse<List<TemplateResponse>> response = new ApiResponse<>();
-        response.setSuccess(true);
-        response.setData(listUser);
-        response.setMessage("success");
-        return response;
+        return new ApiResponse<>(true,templates,"success");
     }
 
     @PostMapping
-    public TemplateResponse create(@RequestBody TemplateRequest request){
+    public TemplateDTO create(@RequestBody TemplateDTO request){
         return templateService.create(request);
     }
 
     @GetMapping("/{id}")
-    public ApiResponse<TemplateResponse> getById(@PathVariable Long id){
-        TemplateResponse template = templateService.getById(id);
-        ApiResponse<TemplateResponse> response = new ApiResponse<>();
-        response.setSuccess(true);
-        response.setData(template);
-        response.setMessage("success");
-        return response;
+    public ApiResponse<TemplateDTO> getById(@PathVariable Long id){
+        TemplateDTO template = templateService.getById(id);
+        return new ApiResponse<>(true,template,"success");
     }
 
     @GetMapping("/list")
-    public ApiResponse<List<TemplateResponse>> getListByBotId(@RequestParam Long botId){
-        List<TemplateResponse> listTemplate = templateService.getByBotId(botId);
-        ApiResponse<List<TemplateResponse>> response = new ApiResponse<>();
-        response.setSuccess(true);
-        response.setData(listTemplate);
-        response.setMessage("success");
-        return response;
+    public ApiResponse<List<TemplateDTO>> getListByBotId(@RequestParam Long botId){
+        List<TemplateDTO> listTemplate = templateService.getByBotId(botId);
+        return new ApiResponse<>(true,listTemplate,"success");
     }
 }

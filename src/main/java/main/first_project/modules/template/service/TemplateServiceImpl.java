@@ -2,11 +2,9 @@ package main.first_project.modules.template.service;
 
 
 import main.first_project.exception.NotFoundException;
-import main.first_project.modules.template.dto.TemplateRequest;
-import main.first_project.modules.template.dto.TemplateResponse;
+import main.first_project.modules.template.dto.TemplateDTO;
 import main.first_project.modules.template.dto.TmpButtonDTO;
 import main.first_project.modules.template.entity.Template;
-import main.first_project.modules.template.entity.TmpButton;
 import main.first_project.modules.template.mapper.TemplateMapper;
 import main.first_project.modules.template.mapper.TmpButtonMapper;
 import main.first_project.modules.template.repository.TemplateRepository;
@@ -14,9 +12,9 @@ import main.first_project.modules.template.repository.TmpButtonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Objects;
+
 
 @Service
 public class TemplateServiceImpl implements TemplateService {
@@ -24,6 +22,7 @@ public class TemplateServiceImpl implements TemplateService {
     private final TmpButtonRepository tmpButtonRepository;
     @Autowired
     private TmpButtonMapper tmpButtonMapper;
+    private TemplateMapper templateMapper;
 
     public TemplateServiceImpl(TemplateRepository templateRepository,TmpButtonRepository tmpButtonRepository,TmpButtonMapper tmpButtonMapper){
         this.templateRepository = templateRepository;
@@ -31,23 +30,21 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
-    public List<TemplateResponse> getAll(){
+    public List<TemplateDTO> getAll(){
         return templateRepository.findAll()
                 .stream()
-                .map(TemplateMapper::toDTO)
+                .map(templateMapper::toDTO)
                 .toList();
     }
 
     @Override
-    public List<TemplateResponse> getByBotId(Long botId) {
-        List<TemplateResponse> listTemplates = templateRepository.findByBotId(botId)
-                .stream()
-                .map(TemplateMapper::toDTO)
-                .toList();
+    public List<TemplateDTO> getByBotId(Long botId) {
+        List<Template> templates = templateRepository.findByBotId(botId);
+        List<TemplateDTO> listTemplates = templateMapper.toDTOList(templates);
 
-        for (TemplateResponse template : listTemplates){
+        for (TemplateDTO template : listTemplates){
             if (template.getType().equals("flex")){
-               java.util.List<TmpButtonDTO> tmpButtonDTOList = this.getTmpButtonByTemplateId(template.getId());
+               List<TmpButtonDTO> tmpButtonDTOList = this.getTmpButtonByTemplateId(template.getId());
                template.setTmpButtonDTOList(tmpButtonDTOList);
             }
         }
@@ -56,20 +53,20 @@ public class TemplateServiceImpl implements TemplateService {
     }
 
     @Override
-    public TemplateResponse create(TemplateRequest request){
+    public TemplateDTO create(TemplateDTO request){
 
-        Template bot = TemplateMapper.toEntity(request);
+        Template template = templateMapper.toEntity(request);
 
-        Template saved = templateRepository.save(bot);
+        Template saved = templateRepository.save(template);
 
-        return TemplateMapper.toDTO(saved);
+        return templateMapper.toDTO(saved);
     }
 
     @Override
-    public TemplateResponse getById(Long id){
-        Template bot = templateRepository.findById(id)
+    public TemplateDTO getById(Long id){
+        Template template = templateRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Bot not found"));
-        return TemplateMapper.toDTO(bot);
+        return templateMapper.toDTO(template);
     }
 
     @Override

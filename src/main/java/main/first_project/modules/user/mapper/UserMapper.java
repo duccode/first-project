@@ -1,21 +1,10 @@
 package main.first_project.modules.user.mapper;
 
+import main.first_project.common.RowMapper;
 import main.first_project.modules.user.dto.*;
 import main.first_project.modules.user.entity.User;
+import org.mapstruct.Mapper;
 
-public class UserMapper {
-    public static User toEntity(UserRequest request){
-        User user = new User();
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
-        return user;
-    }
-
-    public static UserResponse toDTO(User user){
-        UserResponse res = new UserResponse();
-        res.setId(user.getId());
-        res.setUsername(user.getUsername());
-        res.setEmail(user.getEmail());
-        return res;
-    }
+@Mapper(componentModel = "spring")
+public interface UserMapper extends RowMapper<User, UserDTO> {
 }
